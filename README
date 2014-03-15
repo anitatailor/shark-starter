@@ -1,0 +1,19 @@
+1. A starter project for shark.(Shark 0.8.0 - HIVE 0.9.0)
+2. Point $SHARK_HOME ,$HIVE_HOME and $HADOOP_HOME  to respective base directory.
+Eg - for me it is /data/shark/shark-0.8.0-bin-hadoop1/shark-0.8.0 , /data/shark/shark-0.8.0-bin-hadoop1/hive-0.9.0-shark-0.8.0-bin and /data/hadoop-1.2.1 respectively
+3. MainSharkDriver includes a few examples of firing HQL through a shark job.
+4. Add the following files to lib_jars folder
+		hive*.jar from $HIVE_HOME/lib/hive
+		shark_2.9.3-0.8.0.jar from $SHARK_HOME/shark-0.8.0/target/scala-2.9.3
+5. Build using
+		./sbt/sbt assembly 
+6. Run using 
+		CLASSPATH=target/scala-2.9.3/shark-starter-assembly-0.1.jar ./run_shark spark.starter.MainSharkDriver
+
+
+\todos
+1.At the moment all the dependency jars (hive_shark) are required to be added to lib_jars folder.
+Need a way to add multiple unmanaged directories.This does not work as documented in Manual Dependency Management at - 
+http://www.scala-sbt.org/release/docs/Detailed-Topics/Library-Management
+2. The generated shark-assembly jar in the target folder should be added to the run script.
+3. The run_shark script is too expansive at the moment and needs optimization.
